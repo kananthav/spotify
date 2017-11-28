@@ -1,5 +1,9 @@
 <?php
+include ("includes/classes/Account.php");
+    $account = new Account();
+
 include ("includes/handlers/signup-handlers.php");
+include ("includes/handlers/login-handlers.php");
 ?>
 
 <html>

@@ -13,28 +13,22 @@ function sanitizeFormString($inputText){
     return $inputText;
 }
 
-function sanitizeFormEmail($inputText){
-
-}
-
-
+// register button pressed
 if(isset($_POST['signupButton'])){
-//    echo "pressed";
     $username = sanitizeFormUsername($_POST['username']);
-    echo $username;
-
     $firstName = sanitizeFormString($_POST['firstName']);
-    echo $firstName;
-
     $lastName = sanitizeFormString($_POST['lastName']);
-    echo $lastName;
-
     $email = $_POST['email'];
-    echo $email;
-
     $confirmEmail = $_POST['confirmEmail'];
-    echo $confirmEmail;
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
 
+    // Call the 'register' function in 'Account' class.
+    $wasSuccessful = $account->register($username, $firstName, $lastName, $email, $confirmEmail, $password, $confirmPassword);
+
+    if($wasSuccessful == true) {
+        header("Location: index.php");
+    }
 }
 
 ?>
